@@ -48,6 +48,7 @@ const loginuser = (req, res, next) => {
         }
         if (!user) {
             // Handle authentication failure
+            console.log(req.body);
             return res.status(401).json({ message: 'Authentication failed', info });
         }
         // Manually log in the user
@@ -56,8 +57,8 @@ const loginuser = (req, res, next) => {
                 return next(err);
             }
             // Handle successful login
-            //return res.json({ message: 'Login successful', user });
-            return res.redirect('/profile');
+            return res.json({ "id": user.user_id });
+            // return res.redirect('/profile');
         });
     })(req, res, next);
 };

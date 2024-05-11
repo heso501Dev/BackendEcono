@@ -1,17 +1,21 @@
 const express = require('express'),
       app = express(),
       cors = require('cors'),
-      port = process.env.PORT || 3000,
       getReq = require('./routes/getReq'),
       postReq = require('./routes/postReq'),
       patchReq = require('./routes/patchReq'),
       session = require('express-session'),
-      passport = require('passport');
+      passport = require('passport')
+      dotenv = require('dotenv');
     
+dotenv.config();
+
+
+const port = process.env.PORT
 // Middlware
 app.use(
     session({
-      secret: 'key',
+      secret: process.env.sk,
       resave: false,
       saveUninitialized: true,
       cookie: {

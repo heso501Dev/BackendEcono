@@ -29,40 +29,7 @@ const userProfile = async (req, callback) => {
   
   
 
-// user Expenses
-const userExpenses = async (req, callback)=> {
-    try{
-        const userId = req.user.user_id;
-        const result = await db.query(`SELECT * FROM "node" WHERE user_id = $1 AND type = 0 `, [1]);
-        callback(null, result.rows);
-    } catch (err) {
-        callback(err, null);
-    }
-}
-
-// user Income
-const userIncome = async (req, callback) => {
-    try{
-        const userId = req.user.user_id;
-        const result = await db.query(`SELECT * FROM "node" WHERE user_id = $1 AND type = 2 `, [userId]);
-        callback(null, result.rows);
-    } catch (err) {
-        callback(err, null);
-    }
-}
-
-// user Assets
-const userAssets = async (req, callback) => {
-    try{
-        const userId = req.user.user_id;
-        const result = await db.query(`SELECT * FROM "asset_holdings" WHERE user_id = $1`, [userId]);
-        callback(null, result.rows);
-    } catch (err) {
-        callback(err, null);
-    }
-}
 
 
 
-
-module.exports = {userProfile, userExpenses, userIncome, userAssets};
+module.exports = {userProfile};
